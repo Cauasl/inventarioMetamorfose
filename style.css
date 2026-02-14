@@ -73,6 +73,12 @@ section#formulario {
     border: 1px solid var(--corEscura);
 }
 
+#informacaoLista {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px 10px;
+}
 ul {
     list-style: none;
     padding: 0px;
