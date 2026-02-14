@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario metamorfose</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Metamorfose</h1>
+    <section id="formulario">
+        <h2>Perfil do personagem</h2>
+        <p>Nome: <input type="text" class="infosInputs" id="nomePersonagem"></p>
+        <p>Vida: <input type="number" class="infosInputs" id="vidaPersonagem" max="40"></p>
+        <p><button onclick="salvarDados()" id="botaoConcluir">Concluir</button></p>
+    </section>
+
+    <section id="personagem">
+        <h2 id="subtituloNome">sem nome</h2>
+        <p id="infoVida"><button class="botao">-5</button> <button class="botao">-1</button> <span>sem vida definida</span> <button class="botao">+1</button> <button class="botao">+5</button></p>
+    </section>
+
+    <h2>Inventario</h2>
+    <p><input type="text" id="" class="infosInputs" placeholder="Nome do item"> <input type="number" id="" class="infosInputs" placeholder="Peso do item"> <button class="botao">Adicionar item</button></p>
+    <section id="inventario">
+        <ul>
+            <li><span>Nome do item</span> <span>peso</span></li>
+            <li><span>Nome do item</span> <span>peso</span></li>
+            <li><span>Nome do item</span> <span>peso</span></li>
+            <li><span>Nome do item</span> <span>peso</span></li>
+        </ul>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+@font-face {
+    font-family: "Nowharehouse";
+    src: url('fonts/Nowharehouse.ttf') format("truetype");
+}
+:root {
+    --corFundo: #0D0D0D;
+    --corDestaque: #A61F1F;
+    --corClara: #731919;
+    --corEscura: #401616;
+    --cor0: #F2D5D5;
+}
+
+body {
+    background-color: var(--corFundo);
+    color: var(--cor0);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.botao {
+    background-color: transparent;
+    color: var(--cor0);
+    font-weight: bold;
+    border: 2px solid var(--corClara);
+    padding: 5px;
+}
+
+h1 {
+    font-family: "Nowharehouse", fantasy;
+}
+
+
+section#formulario {
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--corEscura);
+    padding: 10px;
+}
+.infosInputs {
+    background-color: transparent;
+    border: 1px solid var(--corDestaque);
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    outline: none;
+    color: var(--cor0);
+    font-size: 1em;
+    width: 100px;
+}
+#botaoConcluir {
+    background-color: transparent;
+    color: var(--cor0);
+    border: none;
+    font-weight: bold;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 5px;
+}
+#botaoConcluir:hover {
+    background-color: var(--corEscura);
+}
+
+#personagem > p {
+    text-align: center;
+    font-size: 1.3em;
+}
+
+#inventario {
+    max-width: 500px;
+    height: 500px;
+    border: 1px solid var(--corEscura);
+}
+
+ul {
+    list-style: none;
+    padding: 0px;
+}
+ul > li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px 10px;
+}
+ul > li:hover {
+    background-color: var(--corEscura);
+}
