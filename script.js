@@ -98,7 +98,7 @@ document.getElementById('botaoIncluirItem').addEventListener("click", function()
 
 
 
-    if(nomeItem != '' && pesoItem != '') { //Só adiciona o item se os inputs não estiverem vazios
+    if(nomeItem != '' && pesoItem != '' && dadosExistente()) { //Só adiciona o item se os inputs não estiverem vazios
         res = itensInventario.length - 1
         itens(nomeItem, pesoItem, itensInventario[res].id);
     }  
