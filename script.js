@@ -42,6 +42,9 @@ function salvarDados() { //Salva os dados do usúario e inicia as outras informa
 
         document.getElementById('subtituloNome').innerText = nome;
         document.getElementById('infoVida').innerText = vida + ' de vida';
+        
+        //Apagando formulario
+        document.getElementById('corpo').removeChild(document.getElementById('formulario'));
     }else {
         alert('Insira as informações do personagem');
     }
@@ -75,33 +78,35 @@ document.getElementById('botaoIncluirItem').addEventListener("click", function()
     let pesoItem = Number(document.getElementById('numberPesoItem').value)
     let res;
 
-    //Adiciona o peso do item a mochila e atualiza a informação no navegador
-    pesoMochila += pesoItem;
-    localStorage.setItem('pesoMochila', pesoMochila);
-    pesoTotal.innerText = "Peso: " + pesoMochila + 'kg';
-
-    //Informação vizual do peso da mochila
-    if(pesoMochila == 20) {
-        pesoTotal.style.color = 'orange';
-    }else if(pesoMochila > 20) {
-        pesoTotal.style.color = 'red';
-    }
-
-    //Adiciona o item ao inventario da mochila no navegador
-    itensInventario.push({
-        nome: nomeItem,
-        peso: pesoItem,
-        id: itensInventario.length
-    })
-    localStorage.setItem('inventarioJogador', JSON.stringify(itensInventario));
-    console.log(itensInventario);
-
-
-
     if(nomeItem != '' && pesoItem != '' && dadosExistente()) { //Só adiciona o item se os inputs não estiverem vazios
-        res = itensInventario.length - 1
+        
+        
+        //Adiciona o peso do item a mochila e atualiza a informação no navegador
+        pesoMochila += pesoItem;
+        localStorage.setItem('pesoMochila', pesoMochila);
+        pesoTotal.innerText = "Peso: " + pesoMochila + 'kg';
+    
+        //Informação vizual do peso da mochila
+        if(pesoMochila == 20) {
+            pesoTotal.style.color = 'orange';
+        }else if(pesoMochila > 20) {
+            pesoTotal.style.color = 'red';
+        }
+    
+        //Adiciona o item ao inventario da mochila no navegador
+        itensInventario.push({
+            nome: nomeItem,
+            peso: pesoItem,
+            id: itensInventario.length
+        })
+        localStorage.setItem('inventarioJogador', JSON.stringify(itensInventario));
+        
+        res = itensInventario.length - 1;
         itens(nomeItem, pesoItem, itensInventario[res].id);
-    }  
+        console.log(itensInventario);
+    }else {
+       alert('Insira as informações do personagem'); 
+    }
 });
 
 function removerItem() {
@@ -129,4 +134,7 @@ if(itensInventario != null && dadosExistente()) { //Coloca as informações no s
 
     document.getElementById('subtituloNome').innerText = localStorage.getItem('nome');
     document.getElementById('infoVida').innerText = localStorage.getItem('vida') + ' de vida';
+    
+    //Apagando formulario
+    document.getElementById('corpo').removeChild(document.getElementById('formulario'));
 }

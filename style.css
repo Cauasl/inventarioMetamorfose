@@ -4,6 +4,7 @@
 }
 :root {
     --corFundo: #0D0D0D;
+    --corFundo2: #220d0d;
     --corDestaque: #A61F1F;
     --corClara: #731919;
     --corEscura: #401616;
@@ -11,7 +12,7 @@
 }
 
 body {
-    background-image: linear-gradient(to bottom, var(--corFundo), var(--corEscura));
+    background-image: linear-gradient(to bottom, var(--corFundo), var(--corFundo2));
     background-attachment: fixed;
     color: var(--cor0);
     font-family: Arial, Helvetica, sans-serif;
