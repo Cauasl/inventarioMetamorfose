@@ -24,9 +24,13 @@ body {
     border: 2px solid var(--corClara);
     padding: 5px;
 }
+.botao:hover {
+    background-color: var(--corClara);
+}
 
 h1 {
     font-family: "Nowharehouse", fantasy;
+    font-weight: normal;
 }
 
 
@@ -79,6 +83,7 @@ section#formulario {
     flex-direction: row;
     justify-content: space-between;
     padding: 6px 10px;
+    font-weight: bold;
 }
 ul {
     list-style: none;

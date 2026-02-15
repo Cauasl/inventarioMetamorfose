@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Metamorfose</h1>
+    <h1>Metamorfose</h1> 
+    <button onclick="apagarDados()">Apagar dados</button>
     <section id="formulario">
         <h2>Perfil do personagem</h2>
         <p>Nome: <input type="text" class="infosInputs" id="nomePersonagem"></p>
@@ -17,7 +18,7 @@
 
     <section id="personagem">
         <h2 id="subtituloNome">sem nome</h2>
-        <p id="infoVida"><button class="botao">-5</button> <button class="botao">-1</button> <span>sem vida definida</span> <button class="botao">+1</button> <button class="botao">+5</button></p>
+        <p><button class="botao">-5</button> <button class="botao">-1</button> <span id="infoVida">sem vida definida</span> <button class="botao">+1</button> <button class="botao">+5</button></p>
     </section>
 
     <h2>Inventario</h2>
@@ -25,12 +26,9 @@
     <section id="inventario">
         <p id="informacaoLista"><span>Nome do item</span> <span id="peso">Peso: 0kg</span></p>
         <ul id="listaItens">
-            <li><span>Nome do item</span> <span>peso</span></li>
-            <li><span>Nome do item</span> <span>peso</span></li>
-            <li><span>Nome do item</span> <span>peso</span></li>
-            <li><span>Nome do item</span> <span>peso</span></li>
         </ul>
     </section>
+    <button onclick="removerItem()" class="botao" style="width: 461px;">Remover item</button>
     <script src="script.js"></script>
 </body>
 </html>
