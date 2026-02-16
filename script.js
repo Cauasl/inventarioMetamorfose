@@ -52,7 +52,7 @@ function salvarDados() { //Salva os dados do usúario e inicia as outras informa
     }
 }
 
-function itens(nomeItem, pesoItem, val, num) { //Cria os elementos da lista
+function itens(nomeItem, pesoItem, val) { //Cria os elementos da lista
     let lista = document.getElementById('listaItens');
     
     let itemLista = document.createElement("li");
@@ -61,12 +61,12 @@ function itens(nomeItem, pesoItem, val, num) { //Cria os elementos da lista
 
     itemLista.addEventListener('click', function() {
         if(itensInventario.length > 0) {
-            for(let i=0; itensInventario[i].id != val || i < 10; i++) {
+            for(let i=0; itensInventario[i].id != val || i < 20; i++) {
                 if(itensInventario[i].id === val) {
                     console.log('Encontrado! ' + i);
                     numID = i;
                     break;
-                }else if(i >= 9) {
+                }else if(i >= 19) {
                     console.log('Quebrou!')
                     break;
                 }else {
