@@ -26,7 +26,6 @@ function dadosExistente() { //Verifica se exite informações sobre o personagem
     }else {
         return false;
     }
-    
 }
 
 function salvarDados() { //Salva os dados do usúario e inicia as outras informações
@@ -49,30 +48,33 @@ function salvarDados() { //Salva os dados do usúario e inicia as outras informa
         
         //Apagando formulario
         document.getElementById('corpo').removeChild(document.getElementById('formulario'));
+
+        //Adiciona função aos botões de controle de vida do personagem
+        controleVidaPersonagem();
     }else {
         alert('Insira as informações do personagem');
     }
 }
 
-function itens(nomeItem, pesoItem, val) { //Cria os elementos da lista
+function itens(nomeItem, pesoItem, val, num) { //Cria os elementos da lista
     let lista = document.getElementById('listaItens');
     
     let itemLista = document.createElement("li");
     let spanNome = document.createElement('span');
     let spanPeso = document.createElement('span');
-    numID = val;
 
     itemLista.addEventListener('click', function() {
-        numID = val;
-        console.log(numID);
+        numID = num;
+        console.log("ID do item: " + val);
+        console.log('Número do item no inventario: ' + numID);
     });
-    itemLista.setAttribute('id', numID);
+    itemLista.setAttribute('id', val);
     
     lista.appendChild(itemLista);
     itemLista.appendChild(spanNome);
     spanNome.innerText = nomeItem;
     itemLista.appendChild(spanPeso);
-    spanPeso.innerText = pesoItem;
+    spanPeso.innerText = String(pesoItem).replace('.', ',');
 }
 
 
@@ -83,43 +85,43 @@ document.getElementById('botaoIncluirItem').addEventListener("click", function()
     let res;
 
     if(nomeItem != '' && pesoItem != '' && dadosExistente()) { //Só adiciona o item se os inputs não estiverem vazios
-
-        controleVidaPersonagem(); //Adiciona função aos botões de controle de vida do personagem
         
         //Adiciona o peso do item a mochila e atualiza a informação no navegador
         pesoMochila += pesoItem;
         localStorage.setItem('pesoMochila', pesoMochila);
-        pesoTotal.innerText = "Peso: " + pesoMochila + 'kg';
-    
-        //Informação vizual do peso da mochila
-        if(pesoMochila == 20) {
-            pesoTotal.style.color = 'orange';
-        }else if(pesoMochila > 20) {
-            pesoTotal.style.color = 'red';
-        }
-    
+        textoPeso()
+
         //Adiciona o item ao inventario da mochila no navegador
         itensInventario.push({
             nome: nomeItem,
             peso: pesoItem,
-            id: itensInventario.length
+            id: String(nomeItem).toLocaleLowerCase().replace(/\s/g, '')
         })
         localStorage.setItem('inventarioJogador', JSON.stringify(itensInventario));
         
         res = itensInventario.length - 1;
-        itens(nomeItem, pesoItem, itensInventario[res].id);
+        itens(nomeItem, pesoItem, nomeItem, res);
         console.log(itensInventario);
+    }else if(!dadosExistente()) {
+        alert('Insira as informações do personagem.'); 
     }else {
-       alert('Insira as informações do personagem'); 
+        alert('Insira dados do item.');
     }
 });
 
 function removerItem() {
     let lista = document.getElementById('listaItens');
-    let item = document.getElementById(String(numID));
+    let item = document.getElementById(itensInventario[numID].id);
+    let valItem = itensInventario[numID].peso;
     if(numID > -1) {
+        pesoMochila -= valItem;
+        localStorage.setItem('pesoMochila', pesoMochila);
+        textoPeso();
+        itensInventario.splice(numID, 1);
+        localStorage.setItem('inventarioJogador', JSON.stringify(itensInventario));
         lista.removeChild(item);
         numID = -1;
+        console.log(itensInventario);
     }
 }
 
@@ -150,21 +152,25 @@ function controleVidaPersonagem() {
     }
 }
 
-if(itensInventario != null && dadosExistente()) { //Coloca as informações no site
-    //Coloca os itens do inventario na tela
-    for(let i=0; i < itensInventario.length; i++) {
-        itens(itensInventario[i].nome, itensInventario[i].peso, itensInventario[i].id)
-    }
-    document.getElementById('peso').innerText = "Peso: " + pesoMochila + 'kg';
-
-    controleVidaPersonagem();
-
+function textoPeso() {
     //Informação vizual do peso da mochila
     if(pesoMochila == 20) {
         pesoTotal.style.color = 'orange';
     }else if(pesoMochila > 20) {
         pesoTotal.style.color = 'red';
     }
+    pesoTotal.innerText = "Peso: " + String(pesoMochila).replace('.', ',') + 'kg';
+}
+
+if(itensInventario != null && dadosExistente()) { //Coloca as informações no site
+    //Coloca os itens do inventario na tela
+    for(let i=0; i < itensInventario.length; i++) {
+        itens(itensInventario[i].nome, itensInventario[i].peso, itensInventario[i].id, i)
+    }
+
+    textoPeso()
+    controleVidaPersonagem();
+
 
     document.getElementById('subtituloNome').innerText = localStorage.getItem('nome');
     if(localStorage.getItem('vidaAtual') == null) {
