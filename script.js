@@ -23,16 +23,20 @@ function dadosExistente() { //Verifica se exite informações sobre o personagem
 function salvarDados() { //Salva os dados do usúario e inicia as outras informações
     let nome = document.getElementById('nomePersonagem').value;
     let vida = Number(document.getElementById('vidaPersonagem').value);
+    let idade = Number(document.getElementById('idadePersonagem').value);
 
     if(nome != '' && vida != null && !dadosExistente()) {
         localStorage.setItem('nome', nome);
+        localStorage.setItem('nomeDaImagem', String(nome).toLocaleLowerCase().replaceAll(/\s/g, '').replaceAll('-', ''));
+            document.getElementById('imagemPerfil').setAttribute('style', `background-image: url("imgs/${localStorage.getItem('nomeDaImagem')}.png");`);
+        localStorage.setItem('idade', idade);
         localStorage.setItem('vida-max', vida);
         localStorage.setItem('inventarioJogador', JSON.stringify([])); //Cria o armazenamento da mochila
             itensInventario = JSON.parse(localStorage.getItem('inventarioJogador'));
         localStorage.setItem('pesoMochila', 0); //Cria o peso da mochila
-        console.log('Dados foram salvos');
+        console.log(localStorage.getItem('nomeDaImagem'));
 
-        document.getElementById('subtituloNome').innerText = nome;
+        document.getElementById('subtituloNome').innerText = nome + ',  ' + idade + ' anos';
 
         vidaAtual = vida;
         localStorage.setItem('vidaAtual', vida);
@@ -56,9 +60,22 @@ function itens(nomeItem, pesoItem, val, num) { //Cria os elementos da lista
     let spanPeso = document.createElement('span');
 
     itemLista.addEventListener('click', function() {
-        numID = num;
-        console.log("ID do item: " + val);
-        console.log('Número do item no inventario: ' + numID);
+        if(itensInventario.length > 0) {
+            for(let i=0; itensInventario[i].id != val || i < 10; i++) {
+                if(itensInventario[i].id === val) {
+                    console.log('Encontrado! ' + i);
+                    numID = i;
+                    break;
+                }else if(i >= 9) {
+                    console.log('Quebrou!')
+                    break;
+                }else {
+                    console.log('Incompatível! ' + i);
+                }
+            }
+            console.log("ID do item: " + val);
+            console.log('Número do item no inventario: ' + numID);
+        }
     });
     itemLista.setAttribute('id', val);
     
@@ -74,7 +91,7 @@ document.getElementById('botaoIncluirItem').addEventListener("click", function()
     //Pega as informações do item adicionado
     let nomeItem = document.getElementById('textNameItem').value
     let pesoItem = Number(document.getElementById('numberPesoItem').value)
-    let res;
+    let res = String(nomeItem).toLocaleLowerCase().replace(/\s/g, '');
 
     if(nomeItem != '' && pesoItem != '' && dadosExistente()) { //Só adiciona o item se os inputs não estiverem vazios
         
@@ -87,12 +104,12 @@ document.getElementById('botaoIncluirItem').addEventListener("click", function()
         itensInventario.push({
             nome: nomeItem,
             peso: pesoItem,
-            id: String(nomeItem).toLocaleLowerCase().replace(/\s/g, '')
+            id: res
         })
         localStorage.setItem('inventarioJogador', JSON.stringify(itensInventario));
         
         res = itensInventario.length - 1;
-        itens(nomeItem, pesoItem, nomeItem, res);
+        itens(nomeItem, pesoItem, res);
         console.log(itensInventario);
     }else if(!dadosExistente()) {
         alert('Insira as informações do personagem.'); 
@@ -103,6 +120,8 @@ document.getElementById('botaoIncluirItem').addEventListener("click", function()
         localStorage.removeItem('inventarioJogador');
         localStorage.removeItem('pesoMochila');
         localStorage.removeItem('nome');
+        localStorage.removeItem('nomeDaImagem');
+        localStorage.removeItem('idade');
         localStorage.removeItem('vida-max');
         localStorage.removeItem('vidaAtual');
     }
@@ -162,16 +181,20 @@ function textoPeso() {
 }
 
 if(itensInventario != null && dadosExistente()) { //Coloca as informações no site
+
+    //Colocando a imagem de perfil do personagem
+    document.getElementById('imagemPerfil').setAttribute('style', `background-image: url("imgs/${localStorage.getItem('nomeDaImagem')}.png");`)
+
     //Coloca os itens do inventario na tela
     for(let i=0; i < itensInventario.length; i++) {
-        itens(itensInventario[i].nome, itensInventario[i].peso, itensInventario[i].id, i)
+        itens(itensInventario[i].nome, itensInventario[i].peso, itensInventario[i].id)
     }
 
-    textoPeso()
+    textoPeso();
     controleVidaPersonagem();
 
 
-    document.getElementById('subtituloNome').innerText = localStorage.getItem('nome');
+    document.getElementById('subtituloNome').innerText = localStorage.getItem('nome') + ',  ' + localStorage.getItem('idade') + ' anos';
     if(localStorage.getItem('vidaAtual') == null) {
         document.getElementById('infoVida').innerText = localStorage.getItem('vida-max') + ' de vida';
     }else {
