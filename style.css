@@ -93,6 +93,10 @@ section#formulario {
     border: 2px solid var(--corEscura);
     display: inline-block;
     grid-area: imagem;
+    background-image: url('imgs/victorpereira.png');
+    background-color: var(--corFundo2);
+    background-position: center;
+    background-size: contain;
 }
 #infoPersonagem {
     display: inline-block;
