@@ -18,6 +18,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+main {
+    padding: 0px;
+    max-width: 500px;
+    margin: auto;
+}
+
 .botao {
     background-color: transparent;
     color: var(--cor0);
@@ -68,9 +74,48 @@ section#formulario {
     background-color: var(--corEscura);
 }
 
-#personagem > p {
+#personagem {
+    max-width: 500px;
+    margin: 10px 0px;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: 100px calc(100% - 110px);
+    grid-template-rows: 100px 35px;
+    gap: 10px;
+    grid-template-areas: 
+        'imagem info'
+        'botoes botoes'
+    ;
+}
+#imagemPerfil {
+    width: 100px;
+    height: 100px;
+    border: 2px solid var(--corEscura);
+    display: inline-block;
+    grid-area: imagem;
+}
+#infoPersonagem {
+    display: inline-block;
+    grid-area: info;
+}
+#subtituloNome {
+    font-size: 1.8em;
+    margin: 5px 0px;
+}
+p#infoVida {
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.5em;
+    margin: 18px 0px 0px 0px;
+}
+#botoesControle {
+    grid-area: botoes;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+#botoesControle > button {
+    display: block;
+    flex-grow: 1;
 }
 
 #inventario {

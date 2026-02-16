@@ -6,29 +6,38 @@
     <title>Inventário metamorfose</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="corpo">
+<body>
     <h1>Metamorfose</h1> 
     <button onclick="apagarDados()">Apagar dados</button>
-    <section id="formulario">
-        <h2>Perfil do personagem</h2>
-        <p>Nome: <input type="text" class="infosInputs" id="nomePersonagem"></p>
-        <p>Vida: <input type="number" class="infosInputs" id="vidaPersonagem" max="40"></p>
-        <p><button onclick="salvarDados()" id="botaoConcluir">Concluir</button></p>
-    </section>
-
-    <section id="personagem">
-        <h2 id="subtituloNome">sem nome</h2>
-        <p><button class="botao">-5</button> <button class="botao">-1</button> <span id="infoVida">sem vida definida</span> <button class="botao">+1</button> <button class="botao">+5</button></p>
-    </section>
-
-    <h2>Inventario</h2>
-    <p><input type="text" id="textNameItem" class="infosInputs" placeholder="Nome do item"> <input type="number" id="numberPesoItem" class="infosInputs" placeholder="Peso do item"> <button class="botao" id="botaoIncluirItem">Adicionar item</button></p>
-    <section id="inventario">
-        <p id="informacaoLista"><span>Nome do item</span> <span id="peso">Peso: 0kg</span></p>
-        <ul id="listaItens">
-        </ul>
-    </section>
-    <p><button onclick="removerItem()" class="botao" style="max-width: 500px; display: block;">Remover item</button></p>
+    <main id="corpo">
+        <section id="formulario">
+            <h2>Perfil do personagem</h2>
+            <p>Nome: <input type="text" class="infosInputs" id="nomePersonagem"></p>
+            <p>Vida: <input type="number" class="infosInputs" id="vidaPersonagem" max="40"></p>
+            <p><button onclick="salvarDados()" id="botaoConcluir">Concluir</button></p>
+        </section>
+        <br>
+        <section id="personagem">
+            <div id="imagemPerfil">
+            </div>
+            <div id="infoPersonagem">
+                <h2 id="subtituloNome">sem nome</h2>
+                <p id="infoVida">sem vida definida</p>
+            </div>
+            <div id="botoesControle">
+                <button name="botaoControle" class="botao">-5</button> <button name="botaoControle" class="botao">-1</button>
+                <button name="botaoControle" class="botao">+1</button> <button name="botaoControle" class="botao">+5</button>
+            </div>
+        </section>
+        <h2>Inventario</h2>
+        <p><input type="text" id="textNameItem" class="infosInputs" placeholder="Nome do item"> <input type="number" id="numberPesoItem" class="infosInputs" placeholder="Peso do item"> <button class="botao" id="botaoIncluirItem">Adicionar item</button></p>
+        <section id="inventario">
+            <p id="informacaoLista"><span>Nome do item</span> <span id="peso">Peso: 0kg</span></p>
+            <ul id="listaItens">
+            </ul>
+        </section>
+        <p><button onclick="removerItem()" class="botao" style="max-width: 500px; display: block;">Remover item</button></p>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
