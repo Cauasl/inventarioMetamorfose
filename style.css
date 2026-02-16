@@ -31,7 +31,7 @@ main {
     border: 2px solid var(--corClara);
     padding: 5px;
 }
-.botao:hover {
+.botao:active {
     background-color: var(--corClara);
 }
 
@@ -120,12 +120,6 @@ p#infoVida {
 #botoesControle > button {
     display: block;
     flex-grow: 1;
-}
-#botoesControle > button:hover {
-    background-color: transparent;
-}
-#botoesControle > button:active {
-    background-color: var(--corClara);
 }
 
 #inventario {

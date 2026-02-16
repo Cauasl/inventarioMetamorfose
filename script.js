@@ -1,12 +1,4 @@
 
-function apagarDados() {
-    localStorage.removeItem('inventarioJogador');
-    localStorage.removeItem('pesoMochila');
-    localStorage.removeItem('nome');
-    localStorage.removeItem('vida-max');
-    localStorage.removeItem('vidaAtual');
-}
-
 //Coloca o peso da mochila na tela
 let pesoTotal = document.getElementById('peso');
 let numID = -1;
@@ -104,8 +96,15 @@ document.getElementById('botaoIncluirItem').addEventListener("click", function()
         console.log(itensInventario);
     }else if(!dadosExistente()) {
         alert('Insira as informações do personagem.'); 
-    }else {
+    }else if(nomeItem == '' && pesoItem == '') {
         alert('Insira dados do item.');
+    }else if(nomeItem === '(reset)') {
+        alert('Dados apagados');
+        localStorage.removeItem('inventarioJogador');
+        localStorage.removeItem('pesoMochila');
+        localStorage.removeItem('nome');
+        localStorage.removeItem('vida-max');
+        localStorage.removeItem('vidaAtual');
     }
 });
 
