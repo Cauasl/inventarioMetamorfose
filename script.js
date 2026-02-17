@@ -108,7 +108,7 @@ document.getElementById('botaoIncluirItem').addEventListener("click", function()
         })
         localStorage.setItem('inventarioJogador', JSON.stringify(itensInventario));
         
-        res = itensInventario.length - 1;
+
         itens(nomeItem, pesoItem, res);
         console.log(itensInventario);
     }else if(!dadosExistente()) {
@@ -176,6 +176,8 @@ function textoPeso() {
         pesoTotal.style.color = 'orange';
     }else if(pesoMochila > 20) {
         pesoTotal.style.color = 'red';
+    }else if(pesoMochila < 20) {
+        pesoTotal.style.color = '#F2D5D5';
     }
     pesoTotal.innerText = "Peso: " + String(pesoMochila).replace('.', ',') + 'kg';
 }
