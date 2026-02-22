@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Nowharehouse";
+    src: url('../fonts/Nowharehouse.ttf') format("truetype");
+}
+:root {
+    --corFundo: #0D0D0D;
+    --corFundo2: #220d0d;
+    --corDestaque: #A61F1F;
+    --corClara: #731919;
+    --corEscura: #401616;
+    --cor0: #F2D5D5;
+}

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventário metamorfose</title>
     <link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/estiloDasAbas.css">
 </head>
 <body>
     <h1>Metamorfose</h1> 
@@ -30,6 +31,23 @@
                 <button name="botaoControle" class="botao">+1</button> <button name="botaoControle" class="botao">+5</button>
             </div>
         </section>
+        <section id="infoAtributos">
+            <p><button>Fechado</button></p>
+            <div id="conteinerAbas">
+                <div id="selecaoAba">
+                    <span onclick="controleAba()"><input type="radio" name="abas" id="Aba1" checked><label for="Aba1">Aba 1</label></span>
+                    <span onclick="controleAba()"><input type="radio" name="abas" id="Aba2"><label for="Aba2">Aba 2</label></span>
+                </div>
+                <div id="containerAba1" class="conteudoAba">
+                    <h2>Assunto aba 1</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quae nesciunt odio! Ut nemo rerum, aut consectetur neque vel enim eaque magni eveniet tempore velit! Voluptatem ducimus quaerat architecto deleniti.</p>
+                </div>
+                <div id="containerAba2" class="conteudoAba conteudoAbaFechado">
+                    <h2>Assunro aba 2</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt, dolorem, nihil suscipit non, cumque pariatur neque culpa laboriosam quidem natus quas asperiores veritatis adipisci voluptates possimus expedita. Veniam, nostrum? Dignissimos.</p>
+                </div>
+            </div>
+        </section>
         <h2>Inventario</h2>
         <p><input type="text" id="textNameItem" class="infosInputs" placeholder="Nome do item"> <input type="number" id="numberPesoItem" class="infosInputs" placeholder="Peso do item"> <button class="botao" id="botaoIncluirItem">Adicionar item</button></p>
         <section id="inventario">
@@ -39,6 +57,7 @@
         </section>
         <p><button onclick="removerItem()" class="botao" style="max-width: 500px; display: block;">Remover item</button></p>
     </main>
-    <script src="script.js"></script>
+    <script src="scripts/sistemaDeAbas.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

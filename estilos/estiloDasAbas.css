@@ -1,0 +1,31 @@
+@import url('estiloGlobal.css');
+
+#conteinerAbas {
+    border: 1px solid var(--corEscura);
+    padding: 0px;
+    max-width: 100%;
+}
+#selecaoAba {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#selecaoAba > span {
+    text-align: center;
+    flex-grow: 1;
+    border: 1px solid var(--corEscura);
+    border-width: 0px 1px 1px 0px;
+    padding: 5px 0px;
+}
+
+
+.conteudoAba {
+    padding: 3px;
+}
+.conteudoAbaFechado {
+    display: none;
+}
+
+#infoAtributos {
+    display: none;
+}
