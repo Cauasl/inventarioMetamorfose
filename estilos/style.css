@@ -13,17 +13,6 @@ main {
     margin: auto;
 }
 
-.botao {
-    background-color: transparent;
-    color: var(--cor0);
-    font-weight: bold;
-    border: 2px solid var(--corClara);
-    padding: 5px;
-}
-.botao:active {
-    background-color: var(--corClara);
-}
-
 h1 {
     font-family: "Nowharehouse", fantasy;
     font-weight: normal;

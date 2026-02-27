@@ -1,7 +1,6 @@
 @import url('estiloGlobal.css');
 
 #conteinerAbas {
-    border: 1px solid var(--corEscura);
     padding: 0px;
     max-width: 100%;
 }
@@ -24,6 +23,17 @@
 }
 .conteudoAbaFechado {
     display: none;
+}
+
+.conteinerAbas {
+    border: 1px solid var(--corEscura);
+    height: 195px;
+    transition: height .5s ease;
+    overflow: hidden;
+}
+.conteinerAbasFechado {
+    border: 0px;
+    height: 0px;
 }
 
 #infoAtributos {

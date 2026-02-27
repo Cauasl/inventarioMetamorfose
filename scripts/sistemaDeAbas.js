@@ -1,5 +1,7 @@
+const conteinerAbas = document.getElementById('conteinerAbas')
+
 function controleAba() {
-    let aba_selecionada = document.getElementsByName('abas');
+    const aba_selecionada = document.getElementsByName('abas');
     console.clear();
     console.log(aba_selecionada);
     aba_selecionada.forEach(function(elemento, i) {
@@ -15,3 +17,17 @@ function controleAba() {
         }
     })
 }
+
+const botaoGaveta = document.getElementById('abaBotaoGaveta')
+let controleBotaoGaveta = true
+botaoGaveta.addEventListener('click', function() {
+    if(!controleBotaoGaveta) {
+        botaoGaveta.innerText = "Aberto"
+        conteinerAbas.classList.toggle('conteinerAbasFechado')
+        controleBotaoGaveta = !controleBotaoGaveta
+    }else {
+        botaoGaveta.innerText = "Fechado"
+        conteinerAbas.classList.toggle('conteinerAbasFechado')
+        controleBotaoGaveta = !controleBotaoGaveta
+    }
+})

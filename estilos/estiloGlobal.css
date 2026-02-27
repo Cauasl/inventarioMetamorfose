@@ -10,3 +10,21 @@
     --corEscura: #401616;
     --cor0: #F2D5D5;
 }
+
+.botao {
+    background-color: transparent;
+    color: var(--cor0);
+    font-weight: bold;
+    border: 2px solid var(--corClara);
+    padding: 5px;
+}
+.botao:active {
+    background-color: var(--corClara);
+}
+.abaBtt {
+    width: 100%;
+    border-color: var(--corEscura);
+}
+.abaBtt:active {
+    background-color: var(--corFundo2);
+}
